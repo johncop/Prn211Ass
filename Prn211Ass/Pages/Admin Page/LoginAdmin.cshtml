@@ -1,0 +1,35 @@
+﻿@page
+@model Pages.LoginModel
+@{
+    ViewBag.Title = "Login Admin";
+    Layout = "/Pages/Shared/LoginLayout.cshtml";
+}
+<hr />
+<body style="background-image:url('https://cdn.wallpapersafari.com/15/58/oVlBvj.jpg');background-size:cover;">
+      <div style="display:flex;justify-content:center;align-items:center;height:100vh;">
+        
+            <form method="post" style="width:30%;background-color:#fff;border:1px solid #ccc;border-radius:5px;padding:30px;">
+            <img src="https://images-platform.99static.com//zj0ctpYmfp2QpRuV10kgHG87w2s=/1053x83:1863x894/fit-in/500x500/99designs-contests-attachments/140/140836/attachment_140836566" alt="Logo" style="width:50%;margin-left:75px;border-radius:50%">
+            <h4> @Model.Message </h4>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.Admin.AdminEmail" class="control-label">Email</label>
+                 <input asp-for="@Model.Admin.AdminEmail" class="form-control" />
+                 <span asp-validation-for="@Model.Admin.AdminEmail" class="text-danger"></span>
+            </div>
+           <div class="form-group">
+             <label asp-for="@Model.Admin.AdminPassword" class="control-label">Password</label>
+             <input asp-for="@Model.Admin.AdminPassword" type="password" class="form-control" />
+             <span asp-validation-for="@Model.Admin.AdminPassword" type="password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <input type="submit" value="Login" class="btn btn-primary" style="width:100%;margin-top:20px;padding:10px;border:none;background-color:#ee4d2d;color:#fff;font-size:18px;border-radius:5px;cursor:pointer;" />
+            </div>
+             <div style="display:flex;justify-content:space-between;margin-top:10px;">
+               <a href="#" style="color:#ee4d2d;">Quên mật khẩu?</a>
+                <a asp-area="" asp-page="/User Page/LoginUser" style="color:#ee4d2d;">Sign in as User</a>
+            </div>
+        </form>
+           
+      </div>
+   </body>

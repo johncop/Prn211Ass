@@ -1,0 +1,66 @@
+﻿@page
+@using Microsoft.AspNetCore.Http;
+@using PRN211Ass;
+@model Prn211Ass.Pages.Admin_Page.AdminMainPageModel
+@{
+    ViewBag.Title = "View Clubs";
+    Layout = "AdminPageLayout.cshtml";
+}
+@{
+    // Retrieve the value of the LOGIN_USER session variable
+    string loginUser = HttpContext.Session.GetString("LOGIN_USER");
+    if (loginUser != "admin")
+    {
+        Response.Redirect("/User Page/LoginUser");
+
+    }
+}
+<h1>Clubs</h1>
+<table class="table">
+    <thead>
+        <tr>
+          <th>
+                Club Id
+            </th>
+            <th>
+                Club Name
+            </th>
+            <th>
+                Club Email
+            </th>
+            <th>
+                Club Phone
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.TblAdmin)
+        {
+            if(item.AdminRole == "admin")
+            {
+                
+            }
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdminId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdminName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdminEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdminPhone)
+                </td>
+
+                <td>
+                    <a asp-page="./AdminViewClubPage" asp-route-id="@item.AdminId">View Club Activities</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
