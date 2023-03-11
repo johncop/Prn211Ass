@@ -25,6 +25,7 @@ namespace eventSchedule.Pages.Users.UserAccount
 
         [BindProperty]
         public TblUser TblUser { get; set; }
+
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD

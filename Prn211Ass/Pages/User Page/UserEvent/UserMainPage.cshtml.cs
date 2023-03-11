@@ -33,10 +33,6 @@ namespace eventSchedule.Pages.Event
             TblCategory = await _context.TblCategories.ToListAsync();
 
             this.UserName = UserName;
-            /*if (HttpContext.Session.GetString("users_email") == null)
-            {
-                return RedirectToPage("./loginForUser");
-            }*/
             if (_context.TblEvents != null)
             {
                 TblEvent = await _context.TblEvents
@@ -50,6 +46,7 @@ namespace eventSchedule.Pages.Event
             }
             return Page();
         }
+<<<<<<< HEAD
 
         public async Task<IActionResult> OnPostAsync(string searchString)
         {
@@ -107,6 +104,9 @@ namespace eventSchedule.Pages.Event
 
             return new JsonResult("Success");
         }*/
+=======
+        
+>>>>>>> duc_backend
 
     }
 }
