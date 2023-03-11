@@ -26,9 +26,12 @@ namespace eventSchedule.Pages.Event
 
         public IList<TblEvent> TblEvent { get;set; } = default!;
         public IList<TblUser> TblUser { get; set; } = default!;
+        public IList<TblCategory> TblCategory { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(string UserName)
         {
+            TblCategory = await _context.TblCategories.ToListAsync();
+
             this.UserName = UserName;
             /*if (HttpContext.Session.GetString("users_email") == null)
             {
