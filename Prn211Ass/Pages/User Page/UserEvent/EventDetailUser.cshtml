@@ -1,0 +1,61 @@
+﻿@page
+@model eventSchedule.Pages.Event.EventDetailUser
+
+<div>
+    <h4>TblEvent</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TblEvent.EventName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TblEvent.EventName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TblEvent.EventContent)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TblEvent.EventContent)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TblEvent.EventStart)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TblEvent.EventStart)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TblEvent.EventStatus)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TblEvent.EventStatus)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TblEvent.EventEnd)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TblEvent.EventEnd)
+        </dd>
+        <dt class="col-sm-2">
+            Admin
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TblEvent.Admin.AdminName)
+        </dd>
+        <dt class="col-sm-2">
+            Category
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TblEvent.Category.CategoryName)
+        </dd>
+        <dt class="col-sm-2">
+            Location
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TblEvent.Location.LocationDetail)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./IndexUser">Back to List</a>
+    
+</div>

@@ -29,6 +29,14 @@
                 <a asp-area="" asp-page="/Admin Page/LoginAdmin" style="color:#ee4d2d;">Sign in as Admin</a>
             </div>
         </form>
+        <div class="row">
+            <div class="col-md-6">
+                <button onclick="location.href='@Url.Page("/LoginForAdmin")'" type="button" class="btn btn-secondary btn-block">Login for Admin</button>
+            </div>
+            <div class="col-md-6">
+                <button onclick="location.href='@Url.Page("../UserAccount/CreateUserAccount")'" type="button" class="btn btn-secondary btn-block">Doesn't have an account? Sign up now!</button>
+            </div>
+        </div>
 
     </div>
 </body>

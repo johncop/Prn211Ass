@@ -36,7 +36,7 @@ namespace Prn211Ass.Pages.User_Page
                 //khoi tao session de kiem tra login ben index
                 HttpContext.Session.SetString("users_email", check.UsersEmail);
 
-                return RedirectToPage("./UserMainPage");
+                return RedirectToPage("UserMainPage", "UserPageLogin", new { UserName = check.UsersName });
             }
             else
             {

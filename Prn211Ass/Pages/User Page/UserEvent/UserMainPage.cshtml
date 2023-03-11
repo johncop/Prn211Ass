@@ -1,0 +1,141 @@
+﻿@page
+@model eventSchedule.Pages.Event.IndexUserModel
+@{
+   
+    Layout = "UserPageLayout.cshtml";
+}
+@*<div class="container my-4">
+    <h1>Welcome user: @Model.UserName</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Event Schedule</h1>
+            <a asp-page="./JoinedEvents">Joined event</a>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Event Content</th>
+                        <th>Event Start</th>
+                        <th>Event Status</th>
+                        <th>Event End</th>
+                        <th>Admin</th>
+                        <th>Category</th>
+                        <th>Location</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.TblEvent)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.EventName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EventContent)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EventStart)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EventStatus)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EventEnd)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Admin.AdminId)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Category.CategoryId)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Location.LocationId)</td>
+                            <td>
+                                <a asp-page="./EventDetailUser" asp-route-id="@item.EventId" class="btn btn-sm btn-info mx-1">Details</a>
+                                <button type="button" class="btn btn-sm btn-success mx-1 join-btn" data-id="@item.EventId">Join Event</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>*@
+                                @*<button type="button" class="btn btn-sm btn-success mx-1" onclick="joinEvent(@item.EventId)">Join Event</button>*@
+
+<div style="display: flex; align-items: center; margin-top: 30px;">
+    <div style="position: relative; margin-right: 10px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/3917/3917754.png" style="position: absolute; top: 50%; transform: translateY(-50%); left: 10px; width: 20px;">
+        <input type="text" placeholder="Search here" style="padding-left: 40px; border: 1px solid #ddd; border-radius: 4px; height: 40px; width: 300px; font-size: 16px;">
+    </div>
+    <button style="background-color: #fcbf49; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; font-weight: bold; font-size: 14px;">Search</button>
+    <div style="position: relative; margin-left: auto;">
+        <select style="height: 40px; border: 1px solid #ddd; border-radius: 4px; padding-left: 10px; font-size: 16px;">
+            <option value="" hidden>Category</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+        </select>
+    </div>
+    <div style="position: relative; margin-left: 10px;">
+        <select style="height: 40px; border: 1px solid #ddd; border-radius: 4px; padding-left: 10px; font-size: 16px;">
+            <option value="" hidden>Sort By</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+        </select>
+    </div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 30px;">
+
+    @foreach (var item in Model.TblEvent)
+    {
+        <div style="flex-basis: calc(33.33% - 30px); background-color: #fff; border: 1px solid #ddd; padding: 30px; margin-bottom: 30px; box-shadow: 0 0 5px rgba(0,0,0,.1);">
+            <div style="font-weight: bold; font-size: 18px; margin-bottom: 20px;">
+                @Html.DisplayFor(modelItem => item.EventName)
+            </div>
+            <div style="font-size: 16px; color: #555; margin-bottom: 20px;">
+                @Html.DisplayFor(modelItem => item.EventStart) - @Html.DisplayFor(modelItem => item.EventEnd)
+            </div>
+            <div>
+                <a style="display: inline-block; padding: 8px 16px; background-color: #fcbf49; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 14px;" asp-page="./EventDetailUser" asp-route-id="@item.EventId">View Details</a>
+            </div>
+        </div>
+    }
+</div>
+                            
+
+@section Scripts {
+    <script>
+        $(function () {
+            $(".join-btn").click(function () {
+                var eventId = $(this).data("id");
+                $.ajax({
+                    type: "POST",
+                    url: "/Event/JoinEvent",
+                    data: { eventId: eventId },
+                    success: function (data) {
+                        if (data.Success) {
+                            alert("Event joined successfully!");
+                        } else {
+                            alert("Error joining event,never gonna stop!");
+                        }
+                    },
+                    error: function () {
+                        alert("Error joining event!");
+                    }
+                });
+            });
+        });
+    </script>
+}
+@*
+<script>
+    function joinEvent(eventId) {
+        $.ajax({
+            type: "POST",
+            url: "/Event/JoinEvent",
+            data: { "eventId": eventId },
+            success: function () {
+                alert("Event joined successfully.");
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                alert("Error: " + xhr.responseText);
+            }
+        });
+    }
+</script>*@
+
+

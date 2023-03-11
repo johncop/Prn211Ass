@@ -1,0 +1,48 @@
+﻿@page
+@model eventSchedule.Pages.Users.UserAccount.CreateUserAccount
+
+<h4>TblUser</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TblUser.UsersName" class="control-label"></label>
+                <input asp-for="TblUser.UsersName" class="form-control" />
+                <span asp-validation-for="TblUser.UsersName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TblUser.UsersEmail" class="control-label"></label>
+                <input asp-for="TblUser.UsersEmail" class="form-control" />
+                <span asp-validation-for="TblUser.UsersEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TblUser.UsersPhone" class="control-label"></label>
+                <input asp-for="TblUser.UsersPhone" class="form-control" />
+                <span asp-validation-for="TblUser.UsersPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TblUser.UsersAddress" class="control-label"></label>
+                <input asp-for="TblUser.UsersAddress" class="form-control" />
+                <span asp-validation-for="TblUser.UsersAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TblUser.UsersPassword" class="control-label"></label>
+                <input asp-for="TblUser.UsersPassword" class="form-control" />
+                <span asp-validation-for="TblUser.UsersPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="../UserEvent/loginForUser">Back to Login</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

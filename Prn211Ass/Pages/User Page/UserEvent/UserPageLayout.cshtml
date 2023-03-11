@@ -1,4 +1,8 @@
-﻿@model Prn211Ass.Pages.UserMainPageModel
+﻿@using Repository.Repository;
+@model eventSchedule.Pages.Event.IndexUserModel
+@{
+    
+}
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,15 +15,37 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-warning border-bottom box-shadow mb-3" style="background-color:#ee4d2d !important;">
         <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-page="UserMainPage" style="font-size: 1.5rem; padding-top: 6px;">
+            <a class="navbar-brand" asp-area="" asp-page="IndexUser" style="font-size: 1.5rem; padding-top: 6px;">
                 <img src="https://cdn.logojoy.com/wp-content/uploads/2018/05/30163918/1241-768x591.png" width="90" height="90" style="margin-left: 8px" class="d-inline-block align-top" alt="">
                 <span style="margin-left: 8px; font-size: 3rem;">Event Schedule</span>
             </a>
             <div class="d-flex flex-row justify-content-start align-items-center" style="margin-right: 150px;">
-                <a class="navbar-brand me-3" asp-area="" asp-page="./LoginUser" style="color: #fff; font-size: 1.2rem; display: flex; align-items: center;">
-                    <img src="https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg" width="60" height="60" alt="User Avatar" style="width: 60px; height: 60px; margin-right: 10px;">
-                    <span style="padding-right: 10px; text-decoration: none;">Login</span>
-                </a>
+                
+                @if(Context.Session.GetString("users_email") != null)
+{
+    <div class="dropdown">
+        <a class="navbar-brand me-3 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fff; font-size: 1.2rem; display: flex; align-items: center;">
+            <img src="https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg" width="60" height="60" alt="User Avatar" style="width: 60px; height: 60px; margin-right: 10px;">
+            <span style="padding-right: 10px; text-decoration: none;">Welcome: @Model.UserName</span>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" asp-page="../UserAccount/UserDetail" asp-route-id="">User Profile</a></li>
+             <li><a class="dropdown-item" asp-page="./LoginUser">Logout</a></li>
+        </ul>
+    </div>
+}
+
+                else
+                {
+                    <a class="navbar-brand me-3" asp-page="./LoginUser" style="color: #fff; font-size: 1.2rem; display: flex; align-items: center;">
+                        <img src="https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg" width="60" height="60" alt="User Avatar" style="width: 60px; height: 60px; margin-right: 10px;">
+                        <span style="padding-right: 10px; text-decoration: none;">Login</span>
+                    </a>
+                }
+
+                
+             
+
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

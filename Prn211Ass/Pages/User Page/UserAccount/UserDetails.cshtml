@@ -1,0 +1,19 @@
+﻿@page
+@model eventSchedule.Pages.Users.UserAccount.UserDetailsModel
+@{
+    ViewData["Title"] = "User Detail";
+}
+
+<h1>User Detail</h1>
+
+@if (Model.User != null)
+{
+        <p>Name: @Model.TblUser.UsersName</p>
+    <p>Email: @Model.TblUser.UsersEmail</p>
+    <p>Phone: @Model.TblUser.UsersPhone</p>
+    <p>Address: @Model.TblUser.UsersAddress</p>
+}
+else
+{
+        <p>User not found.</p>
+}

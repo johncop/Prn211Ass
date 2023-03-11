@@ -1,0 +1,47 @@
+﻿@page
+@model eventSchedule.Pages.Event.JoinedEventModel
+@{
+    ViewData["Title"] = "Joined Events";
+}
+
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Joined Events</h1>
+            <a asp-page="./IndexUser">Back to all events</a>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Event Content</th>
+                        <th>Event Start</th>
+                        <th>Event Status</th>
+                        <th>Event End</th>
+                        <th>Admin</th>
+                        <th>Category</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.TblEventParticipated)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Event.EventName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Event.EventContent)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Event.EventStart)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Event.EventStatus)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Event.EventEnd)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Event.Admin.AdminName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Event.Category.CategoryName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Event.Location.LocationDetail)</td>
+                        </tr>
+                    };
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

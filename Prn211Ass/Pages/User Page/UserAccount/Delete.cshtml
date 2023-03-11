@@ -1,0 +1,46 @@
+﻿@page
+@model eventSchedule.Pages.Users.UserAccount.DeleteModel
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TblUser</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TblUser.UsersName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TblUser.UsersName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TblUser.UsersEmail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TblUser.UsersEmail)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TblUser.UsersPhone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TblUser.UsersPhone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TblUser.UsersAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TblUser.UsersAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TblUser.UsersPassword)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TblUser.UsersPassword)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="TblUser.UsersId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
