@@ -27,7 +27,7 @@ namespace eventSchedule.Pages.Event
         {
             if (HttpContext.Session.GetString("users_email") == null)
             {
-                return RedirectToPage("/LoginForUser");
+                return RedirectToPage("/LoginUser");
             }
             TblEventParticipated = await _context.TblEventParticipateds
                 .Include(t => t.Event)

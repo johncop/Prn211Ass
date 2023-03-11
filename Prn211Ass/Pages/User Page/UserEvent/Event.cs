@@ -27,7 +27,7 @@ namespace eventSchedule.Pages.Users.UserEvent
             var userEmail = HttpContext.Session.GetString("users_email");
             if (userEmail == null)
             {
-                return RedirectToPage("/LoginForUser");
+                return RedirectToPage("/LoginUser");
             }
 
             var user = await _context.TblUsers.FirstOrDefaultAsync(u => u.UsersEmail == userEmail);
