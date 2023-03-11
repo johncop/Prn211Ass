@@ -46,7 +46,6 @@ namespace eventSchedule.Pages.Event
             }
             return Page();
         }
-<<<<<<< HEAD
 
         public async Task<IActionResult> OnPostAsync(string searchString)
         {
@@ -104,9 +103,6 @@ namespace eventSchedule.Pages.Event
 
             return new JsonResult("Success");
         }*/
-=======
-        
->>>>>>> duc_backend
 
     }
 }
