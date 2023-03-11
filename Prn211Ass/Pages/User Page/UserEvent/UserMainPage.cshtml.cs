@@ -30,10 +30,6 @@ namespace eventSchedule.Pages.Event
         public async Task<IActionResult> OnGetAsync(string UserName)
         {
             this.UserName = UserName;
-            /*if (HttpContext.Session.GetString("users_email") == null)
-            {
-                return RedirectToPage("./loginForUser");
-            }*/
             if (_context.TblEvents != null)
             {
                 TblEvent = await _context.TblEvents
@@ -48,46 +44,6 @@ namespace eventSchedule.Pages.Event
             return Page();
         }
         
-        /*public async Task<IActionResult> OnPostJoinEventAsync(int eventId)
-        {
-            var userEmail = HttpContext.Session.GetString("users_email");
-            if (userEmail == null)
-            {
-                return RedirectToPage("/LoginForUser");
-            }
-
-            var user = await _context.TblUsers.FirstOrDefaultAsync(u => u.UsersEmail == userEmail);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            var @event = await _context.TblEvents.FindAsync(eventId);
-            if (@event == null)
-            {
-                return NotFound();
-            }
-
-            if (_context.TblEventParticipateds.Any(je => je.EventId == eventId && je.UsersId == user.UsersId))
-            {
-                // User has already joined the event
-                return new JsonResult("Already joined");
-            }
-
-            // Add the user to the JoinedEvents table
-            var joinedEvent = new TblEventParticipated
-            {
-                EventId = eventId,
-                UsersId = user.UsersId,
-                DateParticipated = DateTime.Now,
-                PaymentStatus = false,
-                UsersStatus = true
-            };
-            _context.TblEventParticipateds.Add(joinedEvent);
-            await _context.SaveChangesAsync();
-
-            return new JsonResult("Success");
-        }*/
 
     }
 }

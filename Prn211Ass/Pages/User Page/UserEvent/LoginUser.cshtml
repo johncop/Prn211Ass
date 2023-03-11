@@ -25,18 +25,12 @@
                 <input type="submit" value="Login" class="btn btn-primary" style="width:100%;margin-top:20px;padding:10px;border:none;background-color:#ee4d2d;color:#fff;font-size:18px;border-radius:5px;cursor:pointer;" />
             </div>
             <div style="display:flex;justify-content:space-between;margin-top:10px;">
-                <a href="#" style="color:#ee4d2d;">Forget Password?</a>
+                <a asp-area="" asp-page="/User Page/UserAccount/CreateUserAccount" style="color:#ee4d2d;">Sign Up</a>
                 <a asp-area="" asp-page="/Admin Page/LoginAdmin" style="color:#ee4d2d;">Sign in as Admin</a>
+                
             </div>
         </form>
-        <div class="row">
-            <div class="col-md-6">
-                <button onclick="location.href='@Url.Page("/LoginForAdmin")'" type="button" class="btn btn-secondary btn-block">Login for Admin</button>
-            </div>
-            <div class="col-md-6">
-                <button onclick="location.href='@Url.Page("../UserAccount/CreateUserAccount")'" type="button" class="btn btn-secondary btn-block">Doesn't have an account? Sign up now!</button>
-            </div>
-        </div>
+
 
     </div>
 </body>
