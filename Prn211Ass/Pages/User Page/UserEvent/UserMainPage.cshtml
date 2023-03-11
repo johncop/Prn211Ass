@@ -5,12 +5,15 @@
     Layout = "UserPageLayout.cshtml";
 }
 <div style="display: flex; align-items: center; margin-top: 30px;">
+    <form method="post" asp-page-handler="search">
     <div style="position: relative; margin-right: 10px;">
         <img src="https://cdn-icons-png.flaticon.com/512/3917/3917754.png" style="position: absolute; top: 50%; transform: translateY(-50%); left: 10px; width: 20px;">
-        <input type="text" placeholder="Search here" style="padding-left: 40px; border: 1px solid #ddd; border-radius: 4px; height: 40px; width: 300px; font-size: 16px;">
+        <input type="text" placeholder="Search here" style="padding-left: 40px; border: 1px solid #ddd; border-radius: 4px; height: 40px; width: 300px; font-size: 16px;" id="search-bar" name="searchString">
     </div>
     <button style="background-color: #fcbf49; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; font-weight: bold; font-size: 14px;">Search</button>
-    <div style="position: relative; margin-left: auto;">
+    
+</form>
+<div style="position: relative; margin-left: auto;">
         <select style="height: 40px; border: 1px solid #ddd; border-radius: 4px; padding-left: 10px; font-size: 16px;">
             <option value="" hidden>Category</option>
             <option value="option1">Option 1</option>
@@ -26,6 +29,7 @@
             <option value="option3">Option 3</option>
         </select>
     </div>
+    <a asp-page="./JoinedEvents">Joined event</a>
 </div>
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 30px;">
 

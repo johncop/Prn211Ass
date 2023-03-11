@@ -47,7 +47,23 @@ namespace eventSchedule.Pages.Event
             }
             return Page();
         }
-        
+
+        public async Task<IActionResult> OnPostAsync(string searchString)
+        {
+            // Get all events if the search string is null or empty
+            if (string.IsNullOrEmpty(searchString))
+            {
+                TblEvent = await _context.TblEvents.ToListAsync();
+            }
+            else
+            {
+                TblEvent = await _context.TblEvents.Where(e => e.EventName.Contains(searchString)).ToListAsync();
+            }
+
+            return Page();
+        }
+
+
         /*public async Task<IActionResult> OnPostJoinEventAsync(int eventId)
         {
             var userEmail = HttpContext.Session.GetString("users_email");
