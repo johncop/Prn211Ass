@@ -14,13 +14,24 @@
     
 </form>
 <div style="position: relative; margin-left: auto;">
-        <select style="height: 40px; border: 1px solid #ddd; border-radius: 4px; padding-left: 10px; font-size: 16px;">
-            <option value="" hidden>Category</option>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-        </select>
-    </div>
+    <select style="height: 40px; border: 1px solid #ddd; border-radius: 4px; padding-left: 10px; font-size: 16px;" id="categorySelect">
+        <option value="" hidden>Category</option>
+            @if (Model.TblCategory != null && Model.TblCategory.Any())
+{
+    foreach (var category in Model.TblCategory)
+    {
+        <option value="@category.CategoryId">@category.CategoryName</option>
+    }
+}
+else
+{
+    <option value="0">No categories found</option>
+}
+
+
+    </select>
+</div>
+
     <div style="position: relative; margin-left: 10px;">
         <select style="height: 40px; border: 1px solid #ddd; border-radius: 4px; padding-left: 10px; font-size: 16px;">
             <option value="" hidden>Sort By</option>
@@ -51,6 +62,15 @@
         </div>
     }
 </div>
-                            
+         
+
+<script>
+    var categorySelect = document.getElementById('categorySelect');
+    categorySelect.addEventListener('change', function () {
+        var categoryId = categorySelect.value;
+        window.location.href = "./UserMainPage?categoryId=" + categoryId;
+    });
+</script>
+
 
 

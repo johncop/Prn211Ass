@@ -47,20 +47,42 @@ namespace eventSchedule.Pages.Event
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(string searchString)
-        {
-            // Get all events if the search string is null or empty
-            if (string.IsNullOrEmpty(searchString))
-            {
-                TblEvent = await _context.TblEvents.ToListAsync();
-            }
-            else
-            {
-                TblEvent = await _context.TblEvents.Where(e => e.EventName.Contains(searchString)).ToListAsync();
-            }
+        public async Task<IActionResult> OnPostAsync(int? categoryId, string searchString)
+{
+    if (categoryId == null && string.IsNullOrEmpty(searchString))
+    {
+        // If no category is selected and search string is null or empty, return all events
+        TblEvent = await _context.TblEvents
+            .Include(t => t.Admin)
+            .Include(t => t.Category)
+            .Include(t => t.Location)
+            .ToListAsync();
+    }
+    else if (categoryId != null)
+    {
+        // Filter events by category
+        TblEvent = await _context.TblEvents
+            .Include(t => t.Admin)
+            .Include(t => t.Category)
+            .Include(t => t.Location)
+            .Where(t => t.CategoryId == categoryId)
+            .ToListAsync();
+    }
+    else if (!string.IsNullOrEmpty(searchString))
+    {
+        // Filter events by search string
+        TblEvent = await _context.TblEvents
+            .Include(t => t.Admin)
+            .Include(t => t.Category)
+            .Include(t => t.Location)
+            .Where(t => t.EventName.Contains(searchString))
+            .ToListAsync();
+    }
 
-            return Page();
-        }
+    return Page();
+}
+
+
 
     }
 }
