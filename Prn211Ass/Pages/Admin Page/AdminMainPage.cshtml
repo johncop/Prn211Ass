@@ -11,7 +11,7 @@
     string loginUser = HttpContext.Session.GetString("LOGIN_USER");
     if (loginUser != "admin")
     {
-        Response.Redirect("/User Page/LoginUser");
+        Response.Redirect("./LoginAdmin");
 
     }
 }

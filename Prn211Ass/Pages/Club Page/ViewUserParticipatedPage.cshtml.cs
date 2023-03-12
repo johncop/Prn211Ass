@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Repository.Models;
 using Repository.Repository;
 
-namespace Prn211Ass.Pages.Admin_Page
+namespace Prn211Ass.Pages.Club_Page
 {
     public class ViewUserParticipatedModel : PageModel
     {

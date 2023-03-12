@@ -22,5 +22,10 @@ namespace Repository.Repository
 
             return _dbSet.Where(e => e.EventId == id);
         }
+        public TblEventParticipated GetEventParticipatedByEventIdAndUserId(int userId, int eventId)
+        {
+
+            return _dbSet.Where(p => p.EventId.Equals(eventId) && p.UsersId.Equals(userId)).FirstOrDefault();
+        }
     }
 }

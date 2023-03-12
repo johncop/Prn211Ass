@@ -8,11 +8,11 @@
 @{
     // Retrieve the value of the LOGIN_USER session variable
     string loginUser = HttpContext.Session.GetString("LOGIN_USER");
-    TblAdmin Club = Model.TblAdmin;
+    TblAdmin Club = Model.tblAdmin;
     TblEvent Event = Model.tblEvent;
     if (loginUser != "admin")
     {
-        Response.Redirect("/User Page/LoginUser");
+        Response.Redirect("./LoginAdmin");
 
     }
 }
@@ -68,7 +68,10 @@
                 }
 
                 <td>
-                    <a asp-page="./Delete" asp-route-id="">Delete User Participated</a>
+                           <form method="post">
+                        <input type="hidden" name="userid" value="@user.UsersId" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
                 </td>
             </tr>
         }

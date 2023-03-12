@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Login Admin";
     Layout = "/Pages/Shared/LoginLayout.cshtml";
+    HttpContext.Session.SetString("LOGIN_USER", "Viewer");
+    HttpContext.Session.SetString("LOGIN_USER_ID", "");
 }
 <hr />
 <body style="background-image:url('https://cdn.wallpapersafari.com/15/58/oVlBvj.jpg');background-size:cover;">

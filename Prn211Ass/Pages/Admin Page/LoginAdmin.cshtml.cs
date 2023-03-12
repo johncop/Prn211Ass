@@ -37,7 +37,21 @@ namespace Prn211Ass.Pages
                 //khoi tao session de kiem tra login ben index
                 //HttpContext.Session.SetString("Email", check.AdminEmail);
                 HttpContext.Session.SetString("LOGIN_USER", check.AdminRole);
-                return RedirectToPage("./AdminMainPage");
+                HttpContext.Session.SetString("LOGIN_USER_ID", check.AdminId.ToString());
+                if (check.AdminRole.Equals("admin"))
+                {
+
+                    return RedirectToPage("./AdminMainPage");
+                }else
+                if (check.AdminRole.Equals("club"))
+                {
+
+                    return RedirectToPage("/Club Page/ClubMainPage");
+                }
+                else
+                {
+                    return Page();
+                }
             }
             else
             {
