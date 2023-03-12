@@ -7,6 +7,7 @@ namespace Prn211Ass.Pages.User_Page.UserEvent
 {
     public class JoinedEventCheckModel : PageModel
     {
+        private readonly TblEventParticipatedRepository _TblEventParticipatedRepository;
 
         public JoinedEventCheckModel(TblEventParticipatedRepository tblEventParticipatedRepository)
         {
@@ -16,6 +17,10 @@ namespace Prn211Ass.Pages.User_Page.UserEvent
         public TblEventParticipated tblEventParticipated { get; set; } = default!;
         public IActionResult OnGet(int id)
         {
+            if (HttpContext.Session.GetString("users_email") == null)
+            {
+                return RedirectToPage("./LoginUser");
+            }
             tblEventParticipated = new TblEventParticipated();
             string loginUserId = HttpContext.Session.GetString("users_id");
             DateTime dateJoined = DateTime.Now;
