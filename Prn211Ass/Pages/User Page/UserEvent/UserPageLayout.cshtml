@@ -22,15 +22,17 @@
             <div class="d-flex flex-row justify-content-start align-items-center" style="margin-right: 150px;">
                 
                 @if(Context.Session.GetString("users_email") != null)
-{
-    <div class="dropdown">
+                {
+                   var userName = Context.Session.GetString("user_name");
+                    var userId = Context.Session.GetString("users_id");
+                    <div class="dropdown">
         <a class="navbar-brand me-3 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fff; font-size: 1.2rem; display: flex; align-items: center;">
             <img src="https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg" width="60" height="60" alt="User Avatar" style="width: 60px; height: 60px; margin-right: 10px;">
-            <span style="padding-right: 10px; text-decoration: none;">Welcome: @Model.UserName</span>
+            <span style="padding-right: 10px; text-decoration: none;">Welcome: @userName</span>
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" asp-page="../UserAccount/UserDetail" asp-route-id="">User Profile</a></li>
-             <li><a class="dropdown-item" asp-page="./LoginUser">Logout</a></li>
+            <li><a class="dropdown-item" asp-page="../UserAccount/UserDetails" asp-route-id="@userId">User Profile</a></li>
+            <li><a class="dropdown-item" asp-page="./LoginUser">Logout</a></li>
         </ul>
     </div>
 }
