@@ -1,7 +1,7 @@
 ﻿@page
 @model eventSchedule.Pages.Users.UserAccount.UserDetailsModel
 @{
-    ViewData["Title"] = "User Detail";
+    
 }
 
 <h1>User Detail</h1>
@@ -17,3 +17,7 @@ else
 {
         <p>User not found.</p>
 }
+<a asp-page="./Edit" asp-route-id="@Model.TblUser.UsersId">Edit</a>
+<div>
+    <a asp-page="../UserEvent/UserMainPage">Back to List</a>
+</div>

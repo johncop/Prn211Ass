@@ -65,7 +65,7 @@ namespace eventSchedule.Pages.Users.UserAccount
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("../UserEvent/UserMainPage");
         }
 
         private bool TblUserExists(int id)

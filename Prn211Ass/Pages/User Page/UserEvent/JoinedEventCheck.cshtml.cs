@@ -7,7 +7,6 @@ namespace Prn211Ass.Pages.User_Page.UserEvent
 {
     public class JoinedEventCheckModel : PageModel
     {
-        private readonly TblEventParticipatedRepository _TblEventParticipatedRepository;
 
         public JoinedEventCheckModel(TblEventParticipatedRepository tblEventParticipatedRepository)
         {

@@ -53,33 +53,4 @@
 </div>
                             
 
-<<<<<<< HEAD
-=======
-@section Scripts {
-    <script>
-        $(function () {
-            $(".join-btn").click(function () {
-                var eventId = $(this).data("id");
-                $.ajax({
-                    type: "POST",
-                    url: "/Event/JoinEvent",
-                    data: { eventId: eventId },
-                    success: function (data) {
-                        if (data.Success) {
-                            alert("Event joined successfully!");
-                        } else {
-                            alert("Error joining event,never gonna stop!");
-                        }
-                    },
-                    error: function () {
-                        alert("Error joining event!");
-                    }
-                });
-            });
-        });
-    </script>
-}
-
->>>>>>> duc_backend
-
 
