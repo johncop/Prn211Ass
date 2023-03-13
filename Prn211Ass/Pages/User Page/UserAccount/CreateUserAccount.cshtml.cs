@@ -39,7 +39,7 @@ namespace eventSchedule.Pages.Users.UserAccount
             _context.TblUsers.Add(TblUser);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("/LoginUser");
+            return RedirectToPage("../UserEvent/LoginUser");
         }
     }
 }

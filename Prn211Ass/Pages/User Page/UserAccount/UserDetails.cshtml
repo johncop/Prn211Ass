@@ -17,7 +17,12 @@ else
 {
         <p>User not found.</p>
 }
-<a asp-page="./Edit" asp-route-id="@Model.TblUser.UsersId">Edit</a>
 <div>
-    <a asp-page="../UserEvent/UserMainPage">Back to List</a>
+    <a asp-page="./Edit" asp-route-id="@Model.TblUser.UsersId">Edit profile</a>
+</div>
+<div>
+    <a asp-page="./Delete" asp-route-id="@Model.TblUser.UsersId">Delete</a>
+</div>
+<div>
+    <a asp-page="../UserEvent/UserMainPage">Back to Event</a>
 </div>

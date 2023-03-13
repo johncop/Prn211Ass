@@ -56,7 +56,7 @@ namespace eventSchedule.Pages.Users.UserAccount
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("../UserEvent/LoginUser");
         }
     }
 }
