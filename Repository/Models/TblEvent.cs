@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Repository.Models;
 
 public partial class TblEvent
 {
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int EventId { get; set; }
 
     public string? EventName { get; set; }
@@ -19,7 +23,7 @@ public partial class TblEvent
 
     public int? LocationId { get; set; }
 
-    public int? AdminId { get; set; }
+    public int AdminId { get; set; }
 
     public DateTime? EventEnd { get; set; }
 

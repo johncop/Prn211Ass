@@ -1,0 +1,65 @@
+﻿@page
+@using Repository.Models;
+@model Prn211Ass.Pages.Club_Page.ClubMainPageModel
+@{
+    ViewBag.Title = "View Clubs";
+    Layout = "ClubPageLayout.cshtml";
+}
+@{
+    // Retrieve the value of the LOGIN_USER session variable
+    string loginUser = HttpContext.Session.GetString("LOGIN_USER");
+    TblAdmin Club = Model.tblAdmin;
+    if (loginUser != "club")
+    {
+        Response.Redirect("/Admin Page/LoginAdmin");
+
+    }
+}
+
+
+<h1>@Club.AdminName</h1>
+<a style="display: inline-block; padding: 8px 16px; background-color: #fcbf49; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 14px;" asp-route-id="@Club.AdminId" asp-page="./CreateEventPage">Create an event</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Event Id
+            </th>
+            <th>
+                Event Name
+            </th>
+            <th>
+                Event Date Start
+            </th>
+            <th>
+                Event Date End
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.tblEvent)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventEnd)
+                </td>
+
+                <td>
+                    <a asp-page="./ViewClubDetailsPage" asp-route-id="@item.EventId">View Details</a> |
+                    <a asp-page="./DeleteEventPage" asp-route-id="@item.EventId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,102 @@
+﻿@page
+@using Repository.Models;
+@model Prn211Ass.Pages.Club_Page.EditEventPageModel
+@{
+    ViewBag.Title = "Edit Event";
+    Layout = "ClubPageLayout.cshtml";
+}
+@{
+    // Retrieve the value of the LOGIN_USER session variable
+    string loginUser = HttpContext.Session.GetString("LOGIN_USER");
+    TblAdmin Club = Model.tblAdmin;
+    if (loginUser != "club")
+    {
+        Response.Redirect("/Admin Page/LoginAdmin");
+
+    }
+}
+<h1>@Club.AdminName</h1>
+<h4>Create new event</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" Hidden>
+                <label asp-for="tblAdmin.AdminId" class="control-label">Admin Id</label>
+                <input asp-for="tblAdmin.AdminId" class="form-control" />
+                <span asp-validation-for="tblAdmin.AdminId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tblEvent.EventName" class="control-label">Event Name</label>
+                <input asp-for="tblEvent.EventName" class="form-control" />
+                <span asp-validation-for="tblEvent.EventName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tblEvent.EventContent" class="control-label">Event Content</label>
+                <input asp-for="tblEvent.EventContent" class="form-control" />
+                <span asp-validation-for="tblEvent.EventContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tblEvent.EventStart" class="control-label">Event Start</label>
+                <input asp-for="tblEvent.EventStart" class="form-control" />
+                <span asp-validation-for="tblEvent.EventStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tblEvent.EventEnd" class="control-label">Event End</label>
+                <input asp-for="tblEvent.EventEnd" class="form-control" />
+                <span asp-validation-for="tblEvent.EventEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tblEvent.CategoryId" class="control-label">Category</label>
+                <select asp-for="tblEvent.CategoryId" class="form-control">
+                    <option value="" disabled selected>Select Category</option>
+                    @foreach (var item in Model.tblCategory)
+                    {
+                        <option value=@item.CategoryId>@item.CategoryName</option>
+                    }
+                    <!-- add more options as needed -->
+                </select>
+                <span asp-validation-for="tblEvent.CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tblEvent.LocationId" class="control-label">Location</label>
+                <select asp-for="tblEvent.LocationId" class="form-control">
+                    <option value="" disabled selected>Select Category</option>
+                    @foreach (var item in Model.tblLocation)
+                    {
+                        <option value=@item.LocationId>@item.LocationDetail</option>
+                    }
+                    <!-- add more options as needed -->
+                </select>
+                <span asp-validation-for="tblEvent.LocationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" asp-route-id="@Model.tblEvent.EventId" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="../UserEvent/loginForUser">Back to Login</a>
+</div>
+<script>
+    $(function () {
+        $("#tblEvent_EventStart").datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true,
+            todayHighlight: true,
+        });
+        $("#tblEvent_EventEnd").datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true,
+            todayHighlight: true,
+        });
+    });
+</script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Repository.Models;
 using Repository.Repository;
 
-namespace Prn211Ass.Pages.Admin_Page
+namespace Prn211Ass.Pages.Club_Page
 {
     public class ViewClubDetailsModel : PageModel
     {
@@ -25,6 +25,7 @@ namespace Prn211Ass.Pages.Admin_Page
         public TblLocation tblLocation { get; set; } = default!;
         public IActionResult OnGet(int id)
         {
+
             tblEvent = _TblEventRepository.GetById(id);
             TblAdmin = _TblAdminrepository.GetById((int)tblEvent.AdminId);
             tblCategory = _TblCategoryRepository.GetById((int)tblEvent.CategoryId);

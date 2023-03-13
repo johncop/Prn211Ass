@@ -1,0 +1,100 @@
+﻿@page
+@using Repository.Models;
+@model Prn211Ass.Pages.Club_Page.CreateEventPageModel
+@{
+    ViewBag.Title = "Create Event";
+    Layout = "ClubPageLayout.cshtml";
+    
+}
+@{
+    // Retrieve the value of the LOGIN_USER session variable
+    string loginUser = HttpContext.Session.GetString("LOGIN_USER");
+    TblAdmin Club = Model.tblAdmin;
+    if (loginUser != "club")
+    {
+        Response.Redirect("/Admin Page/LoginAdmin");
+
+    }
+}
+<h1>@Club.AdminName</h1>
+<a href="javascript:history.back()">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAXVBMVEX///8/Pz8zMzOpqak7Ozvq6upvb29zc3M4ODglJSXw8PB+fn40NDQtLS38/Pz19fXW1tZKSkpCQkJmZmazs7OIiIigoKDe3t7Ly8sqKiqQkJCXl5dgYGB4eHhSUlK7V+JlAAAB7ElEQVR4nO3dgU7CMBjEcQpVijAQQXGAvP9jGmNMhGEkY0vXu//vBfgutLeNkG40AgAAAAAAAAAAAAAAAAAAAAAAg7dcrXKP0Kvn+Tq9bLa5x+jP6yzFEGK1fsg9SU+mVfgW01PuWXrxOA4/0ib3MH34FTCE2S73ON07CxjGb7nn6dz0LGBI89wDde0ioF7Cy4Byq/TxMqBa0zQDpmnumTrVDBiD1BW/sQdDjFJ3bVcCBgKWRH6JXisZApZEPqBjycgHpEWLQsDSye9BxxYlYFHkS0Y+IC1aOseAWktUvmQIWDr5PejYogQsinzJyAekRUvnGFBricqXTDNgWEv9y+JKwLTfTobifXlvwOYe/Io4HowqTHoIOCz1xz0B99X/n5BdtW8fcFfnnv4mdft/CB4WuYe/yeLQOuEx5h7+JvHYOuGpkIQnvsM/6e9D/S7Vvx4a3NMM/760vve+1ODZwuD50OAZ3+B3GoPf2lwjqi1Ug7oxiOi5F4lYHBpVAREVGOxFz0Y1iKi2UA3qxiCi514kYnFoVAVEVGCwFz0bVS2iwV4kogIaVYFnRLWFKn9uosHZlwbnlxqcQWtwjrDBWdAG53kbnMlucK6+wbsRDN5vYfCOkpH+e2YAAAAAAAAAAAAAAAAAAAAAALD2CRNCIQY8zsQcAAAAAElFTkSuQmCC" alt="Back icon" style="height: 50px; width: 50px; margin-right: 5px;">
+    <span style="font-size: 20px;">Back</span>
+</a>
+<h4>Create new event</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="tblEvent.EventName" class="control-label">Event Name</label>
+                <input asp-for="tblEvent.EventName" class="form-control" />
+                <span asp-validation-for="tblEvent.EventName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tblEvent.EventContent" class="control-label">Event Content</label>
+                <input asp-for="tblEvent.EventContent" class="form-control" />
+                <span asp-validation-for="tblEvent.EventContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tblEvent.EventStart" class="control-label">Event Start</label>
+                <input asp-for="tblEvent.EventStart" class="form-control" />
+                <span asp-validation-for="tblEvent.EventStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tblEvent.EventEnd" class="control-label">Event End</label>
+                <input asp-for="tblEvent.EventEnd" class="form-control" />
+                <span asp-validation-for="tblEvent.EventEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tblEvent.CategoryId" class="control-label">Category</label>
+                <select asp-for="tblEvent.CategoryId" class="form-control">
+                    <option value="" disabled selected>Select Category</option>
+                    @foreach (var item in Model.tblCategory)
+                    {
+                        <option value=@item.CategoryId>@item.CategoryName</option>
+                    }
+                    <!-- add more options as needed -->
+                </select>
+                <span asp-validation-for="tblEvent.CategoryId" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="tblEvent.LocationId" class="control-label">Location</label>
+                <select asp-for="tblEvent.LocationId" class="form-control">
+                    <option value="" disabled selected>Select Category</option>
+                    @foreach (var item in Model.tblLocation)
+                    {
+                        <option value=@item.LocationId>@item.LocationDetail</option>
+                    }
+                    <!-- add more options as needed -->
+                </select>
+                <span asp-validation-for="tblEvent.LocationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+$(function () {
+        $("#tblEvent_EventStart").datepicker({
+            format: "yyyy-mm-dd",
+        autoclose: true,
+        todayHighlight: true,
+    });
+        $("#tblEvent_EventEnd").datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true,
+            todayHighlight: true,
+        });
+});
+</script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
