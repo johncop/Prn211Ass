@@ -41,7 +41,7 @@ namespace Prn211Ass.Pages.User_Page
             }
             else
             {
-                Message = "Permission denied";
+                Message = "User name or password is incorrect! Please try again";
                 return Page();
             }
         }
