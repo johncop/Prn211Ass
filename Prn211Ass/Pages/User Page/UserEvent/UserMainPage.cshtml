@@ -67,10 +67,12 @@ else
 <script>
     var categorySelect = document.getElementById('categorySelect');
     categorySelect.addEventListener('change', function () {
-        var categoryId = categorySelect.value;
+        var categoryId = parseInt(categorySelect.value); // convert to integer
         window.location.href = "./UserMainPage?categoryId=" + categoryId;
     });
 </script>
+
+
 
 
 
