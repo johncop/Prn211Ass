@@ -13,35 +13,42 @@
     </div>
     <div class="row mt-4">
         <div class="col-md-12">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Event Name</th>
-                        <th>Event Content</th>
-                        <th>Event Start</th>
-                        <th>Event Status</th>
-                        <th>Event End</th>
-                        <th>Admin</th>
-                        <th>Category</th>
-                        <th>Location</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.TblEventParticipated)
-                    {
+            @if(Model.TblEventParticipated.Count > 0)
+            {
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Event.EventName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Event.EventContent)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Event.EventStart)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Event.EventStatus)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Event.EventEnd)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Event.Admin.AdminName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Event.Category.CategoryName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Event.Location.LocationDetail)</td>
+                            <th>Event Name</th>
+                            <th>Event Content</th>
+                            <th>Event Start</th>
+                            <th>Event Status</th>
+                            <th>Event End</th>
+                            <th>Admin</th>
+                            <th>Category</th>
+                            <th>Location</th>
                         </tr>
-                    };
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.TblEventParticipated)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Event.EventName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Event.EventContent)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Event.EventStart)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Event.EventStatus)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Event.EventEnd)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Event.Admin.AdminName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Event.Category.CategoryName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Event.Location.LocationDetail)</td>
+                            </tr>
+                        };
+                    </tbody>
+                </table>
+            } else
+            {
+                <h1>You haven't join any event yet</h1>
+            }
+            
         </div>
     </div>
 </div>
